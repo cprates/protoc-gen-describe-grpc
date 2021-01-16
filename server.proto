@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package server;
+
+import "option/option.proto";
+
+option go_package = ".;server";
+
+// The Searcher service definition.
+service Searcher {
+  // Search for things.
+  rpc Search (SearchRequest) returns (SearchReply) {}
+}
+
+// The request message containing the expression to search for.
+message SearchRequest {
+  option (option.my_option) = "Option goes here";
+  string expr = 1;
+  bool paginated = 2;
+}
+
+// The search result.
+message SearchReply {
+  repeated string rows = 1;
+  map<string, int64> results_per_page = 2;
+  string taken = 3;
+  string error = 4;
+}

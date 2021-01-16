@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package option;
+
+import "google/protobuf/descriptor.proto";
+
+option go_package = ".;option";
+
+extend google.protobuf.MessageOptions {
+  string my_option = 51234;
+}
